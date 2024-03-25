@@ -124,7 +124,7 @@ function Spotify(props) {
         const minutes = Math.floor(totalDuration / 60000);
         const seconds = ((totalDuration % 60000) / 1000).toFixed(0);
         setPlaylistDuration(`${minutes} minutes and ${(seconds < 10 ? '0' : '')}${seconds} seconds`)
-    }, [playlist])
+    }, [playlist, setPlaylistDuration])
 
     // uses the 2 previous functions to create a list, and add tracks
     const handleListSumbit = async () => {
