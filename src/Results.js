@@ -41,12 +41,12 @@ function Results(props) {
                                     <td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
                                     <td><Button variant='success' type="submit" onClick={() => handleAddTrack(track)}>Add</Button></td>
                                     <td>
-                                        {track.preview_url && (
-                                            <audio controls controlsList="nodownload" style={{ width: '300px', maxWidth: '110px' }}>
+                                        {track.preview_url ? (
+                                            <audio controls controlsList="nodownload" style={{ width: '300px', maxWidth: '120px' }}>
                                                 <source src={track.preview_url} type="audio/mp3" />
                                                 Your browser does not support the audio element.
                                             </audio>
-                                        )}
+                                        ) : <p>No preview Available</p>}
                                     </td>
                                 </tr>
                                 </>
