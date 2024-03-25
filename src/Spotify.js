@@ -50,7 +50,7 @@ function Spotify(props) {
         if (token) {
             getUserData();
         }
-    }, []);
+    }, [token, setUserId, setCountry, setUserName]);
 
     // Calls the API with search endpoint with the input value
     const handleSearchSubmit = async () => {
