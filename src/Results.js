@@ -28,6 +28,7 @@ function Results(props) {
                                 <th>Artist</th>
                                 <th>Duration</th>
                                 <th></th>
+                                <th>Preview</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,6 +40,14 @@ function Results(props) {
                                     <td>{track.artists.map(artist => artist.name).join(', ')}</td>
                                     <td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
                                     <td><Button variant='success' type="submit" onClick={() => handleAddTrack(track)}>Add</Button></td>
+                                    <td>
+                                        {track.preview_url && (
+                                            <audio controls controlsList="nodownload" style={{ width: '300px', maxWidth: '110px' }}>
+                                                <source src={track.preview_url} type="audio/mp3" />
+                                                Your browser does not support the audio element.
+                                            </audio>
+                                        )}
+                                    </td>
                                 </tr>
                                 </>
                             ))}

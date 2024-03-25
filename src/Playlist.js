@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react';
+import React from 'react';
 import { Form } from 'react-bootstrap';
 
 const styleTable = {
@@ -10,17 +10,7 @@ const styleTable = {
 
 
 function PlayList(props) {
-    const { playlist = [], handleRemoveTrack, handlePlayListTitleChange, playListTitle, millisToMinutesAndSeconds, handleListSumbit, Button, setPlaylistDuration, playlistDuration} = props;
-
-    // get the total duration of the playlist
-    useEffect(() => {
-        let totalDuration = playlist.reduce((accumulator, track) => {
-            return accumulator + track.duration_ms;
-        }, 0);
-        const minutes = Math.floor(totalDuration / 60000);
-        const seconds = ((totalDuration % 60000) / 1000).toFixed(0);
-        setPlaylistDuration(`${minutes} minutes and ${(seconds < 10 ? '0' : '')}${seconds} seconds`)
-    }, [playlist])
+    const { playlist = [], handleRemoveTrack, handlePlayListTitleChange, playListTitle, millisToMinutesAndSeconds, handleListSumbit, Button, playlistDuration} = props;
 
     return (
         <>
@@ -42,6 +32,7 @@ function PlayList(props) {
                         <th>Artist</th>
                         <th>Duration</th>
                         <th></th>
+                        <th>Preview</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,6 +43,14 @@ function PlayList(props) {
                             <td>{track.artists.map(artist => artist.name).join(', ')}</td>
                             <td>{millisToMinutesAndSeconds(track.duration_ms)}</td>
                             <td><Button variant='success' type="submit" onClick={() => handleRemoveTrack(track)}>Remove</Button></td>
+                            <td>
+                                {track.preview_url ? (
+                                    <audio controls controlsList="nodownload" style={{ width: '300px', maxWidth: '120px' }}>
+                                        <source src={track.preview_url} type="audio/mp3" />
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                ) : <p>No preview Available</p>}
+                            </td>
                         </tr>
                     ))}
                 </tbody>

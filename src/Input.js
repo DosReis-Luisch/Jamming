@@ -4,7 +4,7 @@ import { Container, Form, Row, Col } from 'react-bootstrap';
 
 const styleHeader = {
     margin: 3,
-    fontSize: "3rem", 
+    fontSize: "6rem", 
 };
 
 function Input(props) {
@@ -17,8 +17,8 @@ function Input(props) {
 
     return (
         <>
-            <header style={styleHeader}>
-                <h1>Jamming</h1>
+            <header>
+                <h1 style={styleHeader} >Jamming</h1>
                 {userId ? <h3>Hi there, {userName}! <br/>Nice to have a user from {country}</h3> : null}
             </header>
             <Button variant='success' type='button' onClick={() => logOut()}>Log out</Button>
