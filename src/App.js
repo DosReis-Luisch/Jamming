@@ -42,7 +42,7 @@ function App() {
   const userAuthentication = async () => {
     try {
       const client_id = 'a31f3585b18d45b1af31a78df574e23a';
-      const redirect_uri = 'http://192.168.1.35:3000';
+      const redirect_uri = 'luischreis.netlify.app';
       const state = generateRandomString(16);
       localStorage.setItem('spotify_auth_state', state);
       const scope = 'playlist-modify-public playlist-modify-private user-read-private user-read-email';
