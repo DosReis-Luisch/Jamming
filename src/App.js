@@ -41,7 +41,7 @@ function App() {
 
   const userAuthentication = async () => {
     try {
-      const client_id = 'a31f3585b18d45b1af31a78df574e23a';
+      const client_id = '**YOUR CLIENT ID**';
       const redirect_uri = 'https://luischreis.netlify.app';
       const state = generateRandomString(16);
       localStorage.setItem('spotify_auth_state', state);
